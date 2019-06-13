@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:head>
+    </h:head>
+    <h:body>
+        <h:form>          
+
+            <h:inputHidden value="#{bemMB.bem.id}" />
+            <p:panelGrid columns="2">
+                <f:facet name="header">
+                    <h:outputLabel value="REGISTRAR VENDA" />
+                </f:facet>
+                <p:outputLabel value="Nome: " />
+                <p:outputLabel value="#{bemMB.bem.nome_bem}" />
+                <p:outputLabel value="Data de Aquisicao: " />
+                <p:outputLabel value="#{bemMB.bem.data_aquisicao}" />
+                <p:outputLabel value="Estado: " />
+                <p:outputLabel value="#{bemMB.bem.uso}" />
+                <p:outputLabel value="Anos de Uso: " />
+                <p:outputLabel value="#{bemMB.bem.tempo_uso}" />
+                <p:outputLabel value="Vida Util: " />
+                <p:outputLabel value="#{bemMB.bem.vida_util}" />
+                <p:outputLabel value="Custo: " />
+                <p:outputLabel value="#{bemMB.bem.custo}" />
+                <p:outputLabel value="Turnos: " />
+                <p:outputLabel value="#{bemMB.bem.turnos}"/>
+                <p:outputLabel value="Valor Residual(porcentagem): " />
+                <p:outputLabel value="#{bemMB.bem.valor_residual}" />
+                <h:outputLabel value="Vender?: " />
+                <p:selectOneMenu value="#{bemMB.bem.venda}" >
+                    <f:selectItem itemValue="Venda não Realizada" itemLabel="Não" />
+                    <f:selectItem itemValue="Vendido" itemLabel="Sim" />
+                </p:selectOneMenu>
+                <p:outputLabel value="Data da Venda: " />
+                <p:inputText value="#{bemMB.bem.data_venda}"/>
+                <p:outputLabel value="Ganho na Venda: " />
+                <p:inputText value="#{bemMB.bem.valor_venda}" />
+
+                <p:commandButton value="Efetivar Venda" action="#{bemMB.actionVender}" />
+                <p:commandButton value="Cancelar" action="#{bemMB.actionVoltar}" />
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>

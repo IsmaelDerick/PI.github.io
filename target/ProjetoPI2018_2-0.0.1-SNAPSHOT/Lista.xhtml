@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:head>
+    </h:head>
+    <h:body>
+        <div align="center">
+            <h:form>          
+
+
+                <p:dataTable id="basicDT" var="objBem" value="#{bemMB.selectAll}">
+                    <f:facet name="header">
+                        LISTA DE BENS CADASTRADOS
+                    </f:facet>
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{objBem.nome_bem}" />
+                    </p:column>
+                    <p:column headerText="Data de Aquisição"> 
+                        <h:outputText value="#{objBem.data_aquisicao}"/>                    
+                    </p:column>
+                    <p:column headerText="Estado">
+                        <h:outputText value="#{objBem.uso}"/>
+                    </p:column>
+                    <p:column headerText="Anos de Uso">
+                        <h:outputText value="#{objBem.tempo_uso} anos"/>
+                    </p:column>
+                    <p:column headerText="Turnos Trabalhados">
+                        <h:outputText value="#{objBem.turnos} turnos" />
+                    </p:column>
+                    <p:column headerText="Valor">
+                        <h:outputText value="R$ #{objBem.custo}"  />
+                    </p:column>
+                    <p:column headerText="Vita Útil">
+                        <h:outputText value="#{objBem.vida_util} anos"/>
+                    </p:column>
+                    <p:column headerText="Valor Residual">
+                        <h:outputText value="#{objBem.valor_residual} %"/>
+                    </p:column>
+                    <p:column headerText="Venda">
+                        <h:outputText value="#{objBem.venda}" />
+                    </p:column>
+                    <p:column headerText="Data de Venda">
+                        <h:outputText value="#{objBem.data_venda}" />
+                    </p:column>
+                    <p:column headerText="Preço de Venda">
+                        <h:outputText value="R$ #{objBem.valor_venda}" />
+                    </p:column>
+                    <p:column headerText="Oções">
+                        <p:menuButton value="Opções">
+                            <p:menuitem value="Cadastrar Venda" action="vendaBens.xhtml?faces-redict=true" icon="ui-icon-extlink">
+                                <f:setPropertyActionListener value="#{objBem}" 
+                                                             target="#{bemMB.bem}"/>
+                            </p:menuitem>        
+                            <p:menuitem value="Editar Bem" action="editarBem.xhtml?faces-redict=true" icon="ui-icon-arrowrefresh-1-w">
+                                <f:setPropertyActionListener value="#{objBem}" 
+                                                             target="#{bemMB.bem}"/>  
+                            </p:menuitem>
+                            <p:menuitem value="Simular Depreciacao" action="simulacao.xhtml?faces-redict=true" icon="ui-icon-disk">
+                                <f:setPropertyActionListener value="#{objBem}" 
+                                                             target="#{bemMB.bem}"/>  
+                            </p:menuitem>
+                            <p:menuitem value="Apagar" action="#{bemMB.actionExcluir}" icon="ui-icon-close">
+                                <f:setPropertyActionListener value="#{objBem.id}" 
+                                                             target="#{bemMB.bem.id}"/>  
+                            </p:menuitem>            
+                        </p:menuButton>
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="Novo" 
+                                 action="#{bemMB.actionNovo}" />
+
+            </h:form>
+        </div>
+    </h:body>
+</html>
